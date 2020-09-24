@@ -1,10 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+
     defaultConfig {
+        compileSdkVersion 29
+        buildToolsVersion '29.0.3'
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 30
     }
     buildTypes {
         release {
@@ -13,12 +15,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
-    }
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.0.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 }

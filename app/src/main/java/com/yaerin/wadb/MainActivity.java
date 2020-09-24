@@ -1,7 +1,5 @@
 package com.yaerin.wadb;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +14,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import static com.yaerin.wadb.Utilities.INTENT_ACTION_ADB_STATE;
 import static com.yaerin.wadb.Utilities.PREF_AUTO_RUN;
@@ -28,7 +28,7 @@ import static com.yaerin.wadb.Utilities.setWadbState;
  * Created by yaerin on 12/7/17.
  */
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private Switch mSwitch;
     private TextView mTextView;

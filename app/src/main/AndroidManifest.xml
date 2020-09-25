@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yaerin.wadb"
     android:versionCode="181228"
@@ -13,35 +14,25 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".TileService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="ACTION_QS_TILE_PREFERENCES" />
-            </intent-filter>
         </activity>
+        <activity android:name=".SplashActivity" />
 
-        <receiver android:name=".BootCompletedReceiver">
-            <intent-filter android:priority="2147483647">
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-
-                <category android:name="android.intent.category.HOME" />
-            </intent-filter>
-        </receiver>
-
-        <service
-            android:name=".TileService"
-            android:icon="@drawable/ic_qs_network_adb_off"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE" />
-            </intent-filter>
-        </service>
     </application>
+
 </manifest>

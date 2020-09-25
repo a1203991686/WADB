@@ -1,40 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Switch
-        android:id="@+id/state"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sw_state"
+        android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         android:checked="false"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="@string/disabled"
-        android:theme="@style/Theme.AppCompat" />
+        android:theme="@style/Theme.AppCompat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Switch
-        android:id="@+id/autoRun"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sw_autoRun"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:text="@string/auto_run" />
+        android:text="@string/auto_run"
+        app:layout_constraintTop_toBottomOf="@+id/sw_state" />
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height=".5dp"
-        android:background="#1F000000" />
+        android:layout_height="1dp"
+        android:background="#1F000000"
+        app:layout_constraintTop_toBottomOf="@+id/sw_autoRun" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/tv_info"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:padding="16dp"
-        android:text="@string/help" />
+        android:text="@string/help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5419"
+        android:textAllCaps="false"
+        android:textColor="@color/design_default_color_background"
+        app:layout_constraintBottom_toBottomOf="@+id/sw_state"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

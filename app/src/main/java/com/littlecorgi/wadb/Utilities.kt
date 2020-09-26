@@ -1,4 +1,4 @@
-package com.yaerin.wadb
+package com.littlecorgi.wadb
 
 import android.content.Context
 import android.net.wifi.WifiManager

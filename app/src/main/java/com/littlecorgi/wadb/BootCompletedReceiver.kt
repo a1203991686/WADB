@@ -1,13 +1,13 @@
-package com.yaerin.wadb
+package com.littlecorgi.wadb
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import com.yaerin.wadb.Utilities.PREF_AUTO_RUN
-import com.yaerin.wadb.Utilities.getIpAddress
-import com.yaerin.wadb.Utilities.getServicePort
-import com.yaerin.wadb.Utilities.setWadbState
+import com.littlecorgi.wadb.Utilities.PREF_AUTO_RUN
+import com.littlecorgi.wadb.Utilities.getIpAddress
+import com.littlecorgi.wadb.Utilities.getServicePort
+import com.littlecorgi.wadb.Utilities.setWadbState
 
 class BootCompletedReceiver : BroadcastReceiver() {
 

@@ -1,4 +1,4 @@
-package com.yaerin.wadb
+package com.littlecorgi.wadb
 
 import android.content.Intent
 import android.graphics.drawable.Icon
@@ -7,10 +7,10 @@ import android.os.Handler
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import androidx.annotation.RequiresApi
-import com.yaerin.wadb.Utilities.INTENT_ACTION_ADB_STATE
-import com.yaerin.wadb.Utilities.getIpAddress
-import com.yaerin.wadb.Utilities.isActivated
-import com.yaerin.wadb.Utilities.setWadbState
+import com.littlecorgi.wadb.Utilities.INTENT_ACTION_ADB_STATE
+import com.littlecorgi.wadb.Utilities.getIpAddress
+import com.littlecorgi.wadb.Utilities.isActivated
+import com.littlecorgi.wadb.Utilities.setWadbState
 
 @RequiresApi(Build.VERSION_CODES.N)
 class TileService : TileService() {

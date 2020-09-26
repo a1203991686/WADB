@@ -1,4 +1,4 @@
-package com.yaerin.wadb
+package com.littlecorgi.wadb
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -16,8 +16,8 @@ import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.yaerin.wadb.Utilities.noOpDelegate
-import com.yaerin.wadb.Utilities.setServicePort
+import com.littlecorgi.wadb.Utilities.noOpDelegate
+import com.littlecorgi.wadb.Utilities.setServicePort
 
 class MainActivity : AppCompatActivity() {
 

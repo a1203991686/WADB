@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yaerin.wadb"
-    android:versionCode="181228"
-    android:versionName="1.7">
+    package="com.littlecorgi.wadb">
 
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />

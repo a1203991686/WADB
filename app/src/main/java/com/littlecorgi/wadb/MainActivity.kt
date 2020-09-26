@@ -21,7 +21,7 @@ import com.littlecorgi.wadb.Utilities.setServicePort
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mSwitchCompat: SwitchCompat
+    private lateinit var mSwState: SwitchCompat
     private lateinit var mTvInfo: TextView
     private lateinit var mTvPort: TextView
     private val mReceiver = StateReceiver()
@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
         // startActivity(Intent(this, SplashActivity::class.java))
 
         lifecycle.addObserver(Lifecycle())
-        mSwitchCompat = findViewById(R.id.sw_state)
+        mSwState = findViewById(R.id.sw_state)
         mTvInfo = findViewById(R.id.tv_info)
         mTvPort = findViewById(R.id.tv_port)
-        mSwitchCompat.setOnCheckedChangeListener { _, isChecked ->
+        mSwState.setOnCheckedChangeListener { _, isChecked ->
             if (Utilities.setWadbState(isChecked)) {
                 setChecked(isChecked)
             }
@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setChecked(checked: Boolean) {
-        mSwitchCompat.isChecked = checked
-        mSwitchCompat.setText(if (checked) R.string.enabled else R.string.disabled)
+        mSwState.isChecked = checked
+        mSwState.setText(if (checked) R.string.enabled else R.string.disabled)
         mTvInfo.text = if (checked)
             getString(R.string.help) + getString(R.string.help_text, Utilities.getIpAddress(this), Utilities.getServicePort()) else getString(R.string.help)
     }

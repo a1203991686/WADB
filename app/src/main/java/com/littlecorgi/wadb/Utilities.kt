@@ -16,7 +16,7 @@ import java.util.*
 object Utilities {
 
     const val PREF_AUTO_RUN = "auto_run"
-    const val INTENT_ACTION_ADB_STATE = "com.yaerin.intent.ADB_STATE"
+    const val INTENT_ACTION_ADB_STATE = "com.littlecorgi.intent.ADB_STATE"
     private var ServicePort = "5419"
 
     fun isActivated(): Boolean {
@@ -42,12 +42,10 @@ object Utilities {
     fun getIpAddress(context: Context): String? {
         val wm = context.applicationContext
                 .getSystemService(Context.WIFI_SERVICE) as WifiManager
-        return if (wm != null) {
+        return run {
             val i = wm.connectionInfo.ipAddress
             java.lang.String.format(Locale.getDefault(), "%d.%d.%d.%d",
                     i and 0xFF, i shr 8 and 0xFF, i shr 16 and 0xFF, i shr 24 and 0xFF)
-        } else {
-            "0.0.0.0"
         }
     }
 
@@ -59,15 +57,23 @@ object Utilities {
         ServicePort = a.toString()
     }
 
+    /**
+     * Android 开启WI-FI调试的3种方式: https://www.jianshu.com/p/790b29b80117
+     */
     fun setWadbState(enabled: Boolean): Boolean {
         try {
+            // 执行su脚本，获取权限
             val process = Runtime.getRuntime().exec("su")
+            // 获取输出流
             val os = DataOutputStream(process.outputStream)
             if (enabled) {
+                // 启动adb
                 os.writeBytes(java.lang.String.format("setprop service.adb.tcp.port %s\n", getServicePort()))
             } else {
+                // 取消adb
                 os.writeBytes("setprop service.adb.tcp.port -1\n")
             }
+            // 重启adb
             os.writeBytes("stop adbd\n")
             os.writeBytes("start adbd\n")
             os.flush()

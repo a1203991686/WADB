@@ -6,16 +6,17 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.appcompat.widget.SwitchCompat
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import com.yaerin.wadb.Utilities.noOpDelegate
 import com.yaerin.wadb.Utilities.setServicePort
 
 class MainActivity : AppCompatActivity() {
@@ -45,16 +46,18 @@ class MainActivity : AppCompatActivity() {
         mTvPort.setOnClickListener {
             val inflate = layoutInflater
             val view = inflate.inflate(R.layout.layout_input_service_port, null)
-            view.findViewById<AppCompatButton>(R.id.btn_sure_port).setOnClickListener {
-                val str = view.findViewById<AppCompatEditText>(R.id.et_port).text?.toString()
-                        ?: "5419"
-                val port = str.toInt()
-                mTvPort.text = str
-                setServicePort(port)
-            }
+            view.findViewById<AppCompatEditText>(R.id.et_port).addTextChangedListener(object : TextWatcher by noOpDelegate() {
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    val str = s?.toString() ?: "5419"
+                    val port = str.toInt()
+                    setServicePort(port)
+                    mTvPort.text = str
+                }
+            })
             AlertDialog.Builder(this)
                     .setView(view)
                     .setTitle(R.string.input_service_port)
+                    .setPositiveButton(R.string.ok) { dialog, _ -> dialog.cancel() }
                     .create()
                     .show()
         }
@@ -80,10 +83,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert)
+        AlertDialog.Builder(this)
                 .setTitle(R.string.about)
                 .setMessage(R.string.about_text)
-                .setNegativeButton(R.string.open_source) { _, _ -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Yaerin/WADB"))) }
+                .setNegativeButton(R.string.open_source) { _, _ -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/a1203991686/WADB"))) }
+                .setNeutralButton(R.string.open_source_yaerin) { _, _ -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Yaerin/WADB"))) }
                 .setPositiveButton(R.string.ok) { dialog, _ -> dialog.cancel() }
                 .create()
                 .show()

@@ -5,6 +5,8 @@ import android.net.wifi.WifiManager
 import java.io.DataOutputStream
 import java.io.IOException
 import java.io.InputStreamReader
+import java.lang.reflect.InvocationHandler
+import java.lang.reflect.Proxy
 import java.util.*
 
 /**
@@ -74,5 +76,17 @@ object Utilities {
             e.printStackTrace()
         }
         return false
+    }
+
+    /**
+     * 使用动态代理，让接口也可以选择性的实现方法，用以缩短代码长度，减少不必要的方法
+     */
+    inline fun <reified T> noOpDelegate(): T {
+        val javaClass = T::class.java
+        val noOpHandler = InvocationHandler { _, _, _ ->
+            // no op
+        }
+        return Proxy.newProxyInstance(javaClass.classLoader,
+                arrayOf(javaClass), noOpHandler) as T
     }
 }

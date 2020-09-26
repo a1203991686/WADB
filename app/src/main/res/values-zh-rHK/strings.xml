@@ -4,8 +4,9 @@
     <string name="disabled">已禁用</string>
     <string name="enabled">已啓用</string>
     <string name="open_source">開源倉庫</string>
+    <string name="open_source_yaerin">Yaerin</string>
     <string name="about">關於</string>
-    <string name="about_text">Copyright © 2017&#8211;2018 Yaerin All rights reserved.</string>
+    <string name="about_text">Copyright © 2017&#8211;2020 LittleCorgi All rights reserved. \nPowered by Yaerin</string>
     <string name="help">此程序需要超級用戶授權，請確保您的設備已破解ROOT授權。 :)\n</string>
     <string name="help_text">在電腦上運行下面的命令：\n\nadb connect %s:%s\nadb devices</string>
     <string name="ok">確定</string>

@@ -98,7 +98,6 @@ class MainActivity : AppCompatActivity() {
         override fun onReceive(context: Context?, intent: Intent?) {
             setChecked(Utilities.isActivated())
         }
-
     }
 
     inner class Lifecycle : LifecycleObserver {
@@ -113,6 +112,8 @@ class MainActivity : AppCompatActivity() {
         @OnLifecycleEvent(androidx.lifecycle.Lifecycle.Event.ON_DESTROY)
         fun onDestroy() {
             unregisterReceiver(mReceiver)
+            // 当软件被清除时自动关闭网络ADB
+            Utilities.setWadbState(false)
         }
     }
 }
